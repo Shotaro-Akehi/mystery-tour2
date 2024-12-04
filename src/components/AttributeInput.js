@@ -7,6 +7,7 @@ const AttributeInput = ({ onSubmit, price }) => {
     nationality: "",
     age: "",
     preference: "",
+    budget: "", // 予算を初期化
   });
 
   const handleChange = (e) => {
@@ -66,6 +67,17 @@ const AttributeInput = ({ onSubmit, price }) => {
               <option value="冒険">冒険</option>
             </select>
           </div>
+          {/* 予算選択を追加 */}
+          <div className="input-group">
+            <label htmlFor="budget">予算を選択してください</label>
+            <select id="budget" name="budget" value={formData.budget} onChange={handleChange}>
+              <option value="">選択してください</option>
+              <option value="2-3万円">2-3万円</option>
+              <option value="3-4万円">3-4万円</option>
+              <option value="4-5万円">4-5万円</option>
+              <option value="5万円以上">5万円以上</option>
+            </select>
+          </div>
           <button type="submit" className="btn">冒険を始める</button>
         </form>
       </div>
@@ -74,5 +86,3 @@ const AttributeInput = ({ onSubmit, price }) => {
 };
 
 export default AttributeInput;
-
-

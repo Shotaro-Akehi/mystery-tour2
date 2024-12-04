@@ -16,7 +16,7 @@ const MissionTour = ({ route, onComplete, price, setPrice }) => {
       if (currentStep < route.missions.length - 1) {
         setCurrentStep(currentStep + 1);
         setShowHint(false);
-        setPrice(prevPrice => prevPrice - 1000);
+        setPrice((prevPrice) => prevPrice - 1000);
       } else {
         onComplete(route.destination);
       }
@@ -33,7 +33,7 @@ const MissionTour = ({ route, onComplete, price, setPrice }) => {
   };
 
   return (
-    <div className={`container ${fadeIn ? 'fade-in' : ''}`}>
+    <div className={`container ${fadeIn ? "fade-in" : ""}`}>
       <div className="price-display">あなたのお支払い金額は{price.toLocaleString()}円です</div>
       <div className="card">
         <h2>ミステリーツアー: ミッション {currentStep + 1}</h2>
@@ -58,10 +58,17 @@ const MissionTour = ({ route, onComplete, price, setPrice }) => {
           </button>
         </div>
       </div>
+
+      {/* 地図画像を画面の下に追加 */}
+      <div style={{ marginTop: "20px" }}>
+        <img
+          src="/images/tizu.jpeg"
+          alt="地図"
+          style={{ width: "100%", maxHeight: "300px", objectFit: "cover" }}
+        />
+      </div>
     </div>
   );
 };
 
 export default MissionTour;
-
-

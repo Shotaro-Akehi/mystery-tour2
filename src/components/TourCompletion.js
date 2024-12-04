@@ -4,6 +4,7 @@ import "../styles/global.css";
 const TourCompletion = ({ destination, price }) => {
   const [destinationInfo, setDestinationInfo] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showDetails, setShowDetails] = useState(false); // 詳細を表示するための状態
 
   useEffect(() => {
     const fetchDestinationInfo = async () => {
@@ -46,10 +47,32 @@ const TourCompletion = ({ destination, price }) => {
         )}
         <p className="celebration">素晴らしい冒険でした！新たな発見と思い出を胸に、次なる冒険へ出発しましょう。</p>
       </div>
+
+      {/* 「詳細を見る」ボタンの追加 */}
+      <div style={{ marginTop: "20px" }}>
+        <button
+          className="btn"
+          onClick={() => setShowDetails(!showDetails)}
+        >
+          {showDetails ? "閉じる" : "詳細を見る"}
+        </button>
+        {showDetails && (
+          <p style={{ marginTop: "10px" }}>
+            目的地の説明文を追加する
+          </p>
+        )}
+      </div>
+
+      {/* 地図画像を画面の下に追加 */}
+      <div style={{ marginTop: "20px" }}>
+        <img
+          src="/images/tizu.jpeg"
+          alt="地図"
+          style={{ width: "100%", maxHeight: "300px", objectFit: "cover" }}
+        />
+      </div>
     </div>
   );
 };
 
 export default TourCompletion;
-
-

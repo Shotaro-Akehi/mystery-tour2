@@ -15,7 +15,7 @@ const RouteSelection = ({ route, onStartTour, price }) => {
 
         {/* 地図画像の追加 */}
         <div className="map-container" style={{ marginTop: '20px' }}>
-          <img src="/images/tizu.jpeg" alt="ルートの地図" style={{ width: '100%', height: 'auto' }} />
+          <img src="/images/tizu.webp" alt="ルートの地図" style={{ width: '100%', height: 'auto' }} />
         </div>
       </div>
     </div>

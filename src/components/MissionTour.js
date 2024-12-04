@@ -60,12 +60,16 @@ const MissionTour = ({ route, onComplete, price, setPrice }) => {
       </div>
 
       {/* 地図画像を画面の下に追加 */}
-      <div style={{ marginTop: "20px" }}>
-        <img
-          src="/images/tizu.jpeg"
-          alt="地図"
-          style={{ width: "100%", maxHeight: "300px", objectFit: "cover" }}
-        />
+<div style={{ marginTop: "20px" }}>
+  <img
+    src="/images/miti1.jpg"
+    alt="地図"
+    style={{
+      width: "100%",       // 幅をコンテナ全体に設定
+      height: "auto",      // 自動調整で高さを維持
+      objectFit: "contain" // 画像全体を表示
+    }}
+  />
       </div>
     </div>
   );

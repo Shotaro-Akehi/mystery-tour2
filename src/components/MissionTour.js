@@ -32,12 +32,29 @@ const MissionTour = ({ route, onComplete, price, setPrice }) => {
     return directions[currentStep % directions.length];
   };
 
+  const handleTakePhoto = () => {
+    // カメラ起動のための入力要素を動的に作成
+    const videoInput = document.createElement("input");
+    videoInput.type = "file";
+    videoInput.accept = "image/*";
+    videoInput.capture = "environment"; // 背面カメラを指定
+    videoInput.click(); // ユーザーにカメラを起動させる
+  };
+
   return (
     <div className={`container ${fadeIn ? "fade-in" : ""}`}>
       <div className="price-display">あなたのお支払い金額は{price.toLocaleString()}円です</div>
       <div className="card">
         <h2>ミステリーツアー: ミッション {currentStep + 1}</h2>
         <p><strong>ミッション:</strong> {route.missions[currentStep]}</p>
+
+        {currentStep === 1 && ( // 2個目のミッションのみ「写真を撮る」ボタンを表示
+          <div style={{ marginTop: "20px" }}>
+            <button onClick={handleTakePhoto} className="btn">
+              写真を撮る
+            </button>
+          </div>
+        )}
 
         {showHint && (
           <div className="hint-arrow">
@@ -59,18 +76,20 @@ const MissionTour = ({ route, onComplete, price, setPrice }) => {
         </div>
       </div>
 
-      {/* 地図画像を画面の下に追加 */}
-<div style={{ marginTop: "20px" }}>
-  <img
-    src="/images/miti1.jpg"
-    alt="地図"
-    style={{
-      width: "100%",       // 幅をコンテナ全体に設定
-      height: "auto",      // 自動調整で高さを維持
-      objectFit: "contain" // 画像全体を表示
-    }}
-  />
-      </div>
+      {/* 地図画像を条件付きで表示 */}
+      {currentStep !== 1 && ( // 2個目のミッション以外で画像を表示
+        <div style={{ marginTop: "20px" }}>
+          <img
+            src="/images/miti1.jpg"
+            alt="地図"
+            style={{
+              width: "100%",       // 幅をコンテナ全体に設定
+              height: "auto",      // 自動調整で高さを維持
+              objectFit: "contain" // 画像全体を表示
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 };
